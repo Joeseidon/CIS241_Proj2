@@ -37,6 +37,9 @@ struct node *list = NULL;
 int FIRST_CMD = 1;
 int remain_active = 1;
 
+int performAction(int command);
+void save_to_file(struct node *list, char *filename);
+
 int main(int argc, char *argv[]){
 
 	int command =0;
@@ -57,7 +60,9 @@ int main(int argc, char *argv[]){
 		}
 		 
 		//act on valid input
-		performAction(input_command);
+		if(!performAction(input_command)){
+			printf("Action Error!\n");
+		}
 
 	}
 
@@ -143,6 +148,13 @@ int performAction(int command){
 		case 9:
 			save_to_file(list,OUT_FILE);
 			break;
+			
+		default:
+			return 0;
+			
+	}
+	
+	return 1;
 }
 
 void save_to_file(struct node *list, char *filename){
