@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#ifndef functions.h
-#define functions.h
+#ifndef functions_h
+#define functions_h
 
 struct product{
 	char *name;
