@@ -5,7 +5,7 @@
 #include "functions.h"
 
 #define NUM_CMDS 10
- 
+/*
 typedef struct command command{
 	int cmd_num;
 	char *prompt;
@@ -23,7 +23,7 @@ command commands[10] = {
 	{7, ""},
 	{8, ""},
 	{9, ""}
-};
+};*/
 const char *OUT_FILE = "list.txt";
 const char *command_prompt =("1: Create and empty list \t 2: Insert a product"
 						  +"\n3: Delete a product	   \t 4: Delete the entire list"
@@ -66,14 +66,14 @@ int performAction(int command){
 	char *name, *units;
 	int price=0,quantity=0;
 	
-	int i;
+	/*int i;
 	for(i=0; i<NUM_CMDS; i++){
 		if commands[i].cmd_num == command){
 			printf("\n%s",commands[i].prompt);
 			break;
 		}
-	}
-	switch(i){
+	}*/
+	switch(command){
 		case 0:
 			exit(0);
 			break;
