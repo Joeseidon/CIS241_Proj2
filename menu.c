@@ -74,13 +74,6 @@ int performAction(int command){
 	char *name="", *units="";
 	int price=0,quantity=0;
 	
-	/*int i;
-	for(i=0; i<NUM_CMDS; i++){
-		if commands[i].cmd_num == command){
-			printf("\n%s",commands[i].prompt);
-			break;
-		}
-	}*/
 	switch(command){
 		case 0:
 			exit(0);
@@ -98,7 +91,7 @@ int performAction(int command){
 			printf("\nEnter product info. (name,unit,price,quantity)\n");
 			
 			scanf("%s,%s,%d,%d",name,units,&price,&quantity);
-			
+			printf("Successful Read\n");
 			//insert item in list
 			insert(list,name,units,price,quantity);
 			break;
