@@ -87,7 +87,7 @@ int performAction(int command){
 			list = init();
 			break;
 		case 2:
-			fflush(stdin);
+			//fflush(stdin);
 			printf("\nEnter product info. (name,unit,price,quantity)\n");
 			
 			scanf("%s,%s,%d,%d",name,units,&price,&quantity);
