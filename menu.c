@@ -2,7 +2,7 @@
 #include <stdlib.h>
 //#include <ctypes.h>
 #include <string.h>
-#include <functions.h>
+#include "functions.h"
 
 #define NUM_CMDS 10
  
