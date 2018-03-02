@@ -25,16 +25,17 @@ command commands[10] = {
 	{9, ""}
 };*/
 const char *OUT_FILE = "list.txt";
-const char *command_prompt =("1: Create and empty list \t 2: Insert a product"
-						  +"\n3: Delete a product	   \t 4: Delete the entire list"
-						  +"\n5: Search a product	   \t 6: Display products in the list"
-						  +"\n7: Purchase a product    \t 8: Sell a product"
-						  +"\n9: Save to file     	   \t 0: Exit"
-						  +"\n\nEnter a command: ");
+const char *command_prompt[6] ={"1: Create and empty list \t 2: Insert a product",
+						  "\n3: Delete a product	   \t 4: Delete the entire list",
+						  "\n5: Search a product	   \t 6: Display products in the list",
+						  "\n7: Purchase a product    \t 8: Sell a product",
+						  "\n9: Save to file     	   \t 0: Exit",
+						  "\n\nEnter a command: "};
 
 struct node *list = NULL;
 
 int FIRST_CMD = 1;
+int remain_active = 1;
 
 int main(int argc, char *argv[]){
 
@@ -42,12 +43,14 @@ int main(int argc, char *argv[]){
 
 	while(remain_active){
 		//print intro prompt
-		printf("%s",command_prompt);
+		int i;
+		for(i = 0; i<6; i++)
+			printf("%s",command_prompt[i]);
 		//monitor for user input 
 		do{
 			fflush(stdin);
 			scanf("%d",&command);
-		}while((FIRST_CMD == 1 & command != 1) || (command < 0 || command > 9);//first command must be to create list //after, it must just be a vlid command
+		}while((FIRST_CMD == 1 && command != 1) || (command < 0 || command > 9));//first command must be to create list //after, it must just be a valid command
 		
 		if(FIRST_CMD == 1){
 			FIRST_CMD = 0;
@@ -89,7 +92,7 @@ int performAction(int command){
 			fflush(stdin);
 			printf("\nEnter product info. (name,unit,price,quantity)\n");
 			
-			scanf("%s,%s,%d,%d",name,quantity,&price,&quantity);
+			scanf("%s,%s,%d,%d",name,units,&price,&quantity);
 			
 			//insert item in list
 			insert(list,name,units,price,quantity);
@@ -119,7 +122,7 @@ int performAction(int command){
 		case 6:
 			printf("\nThe list contains the following:\n"); 
 			
-			display();
+			display(list);
 			break;
 		case 7:
 			printf("\nEnter the name to purchase:\n");
@@ -143,9 +146,12 @@ int performAction(int command){
 }
 
 void save_to_file(struct node *list, char *filename){
-	FILE *out = fopen(filename);
+	FILE *out = fopen(filename, 'w');
 	while(list!=NULL){
-		fprintf(out,"%s,%s,%d,%d\n",list->name,list->unit,list->price,list->quantity);
+		fprintf(out,"%s,%s,%d,%d\n",list->product->name,
+									list->product->unit,
+									list->product->price,
+									list->product->quantity);
 		
 		list=list->next;
 	}
