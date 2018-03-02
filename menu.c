@@ -47,13 +47,15 @@ int main(int argc, char *argv[]){
 	while(remain_active){
 		//print intro prompt
 		int i;
-		for(i = 0; i<6; i++)
-			printf("%s",command_prompt[i]);
-		//monitor for user input 
+		
 		do{
+			for(i = 0; i<6; i++)
+			printf("%s",command_prompt[i]);
+		
+			//monitor for user input 
 			fflush(stdin);
 			scanf("%d",&command);
-		}while((FIRST_CMD == 1 && command != 1) || (command < 0 || command > 9));//first command must be to create list //after, it must just be a valid command
+		}while((FIRST_CMD == 1 && command != 1) || (!FIRST_CMD && (command < 0 || command > 9)));//first command must be to create list //after, it must just be a valid command
 		
 		if(FIRST_CMD == 1){
 			FIRST_CMD = 0;
