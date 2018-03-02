@@ -146,12 +146,12 @@ int performAction(int command){
 }
 
 void save_to_file(struct node *list, char *filename){
-	FILE *out = fopen(filename, 'w');
+	FILE *out = fopen(filename, "w");
 	while(list!=NULL){
-		fprintf(out,"%s,%s,%d,%d\n",list->product->name,
-									list->product->unit,
-									list->product->price,
-									list->product->quantity);
+		fprintf(out,"%s,%s,%d,%d\n",list->data->name,
+									list->data->unit,
+									list->data->price,
+									list->data->quantity);
 		
 		list=list->next;
 	}
