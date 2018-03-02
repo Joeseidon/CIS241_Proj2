@@ -71,7 +71,7 @@ int main(int argc, char *argv[]){
 
 int performAction(int command){
 	//temp values
-	char *name, *units;
+	char *name="", *units="";
 	int price=0,quantity=0;
 	
 	/*int i;
