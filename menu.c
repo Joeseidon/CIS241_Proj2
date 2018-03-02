@@ -38,7 +38,7 @@ int FIRST_CMD = 1;
 int remain_active = 1;
 
 int performAction(int command);
-void save_to_file(struct node *list, char *filename);
+void save_to_file(struct node *list, const char *filename);
 
 int main(int argc, char *argv[]){
 
@@ -60,7 +60,7 @@ int main(int argc, char *argv[]){
 		}
 		 
 		//act on valid input
-		if(!performAction(input_command)){
+		if(!performAction(command)){
 			printf("Action Error!\n");
 		}
 
@@ -157,7 +157,7 @@ int performAction(int command){
 	return 1;
 }
 
-void save_to_file(struct node *list, char *filename){
+void save_to_file(struct node *list, const char *filename){
 	FILE *out = fopen(filename, "w");
 	while(list!=NULL){
 		fprintf(out,"%s,%s,%d,%d\n",list->data->name,
