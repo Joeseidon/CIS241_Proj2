@@ -119,7 +119,7 @@ int performAction(int command){
 			fflush(stdin);
 			
 			scanf("%s",name);
-			
+			printf("Name Recieved\n");
 			search(list, name);
 			break;
 		case 6:
