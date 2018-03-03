@@ -98,6 +98,7 @@ int performAction(int command){
 			scanf("%s,%s,%d,%d",name,units,&price,&quantity);
 
 			//insert item in list
+			printf("Recieved: %s,%s,%d,%d\n",name,units,price,quantity);
 			insert(list,name,units,price,quantity);
 			break;
 		case 3:
