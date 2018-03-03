@@ -76,8 +76,9 @@ int main(int argc, char *argv[]){
 
 int performAction(int command){
 	//temp values
-	char name[256],units[256];
+	char *name,*units;
 	int price=0,quantity=0;
+	char text[256];
 	
 	switch(command){
 		case 0:
@@ -96,7 +97,19 @@ int performAction(int command){
 			printf("\nEnter product info. (name,unit,price,quantity)\n");
 			fflush(stdin);
 			fflush(stdout);
-			scanf("%s,%s,%d,%d\n",name,units,&price,&quantity);
+			fgets(text,256,stdin);
+			char *token = strtok(text, ",");
+			while(token != NULL){
+				if(i==0){
+					name=token;
+				}else if(i==1){
+					units=token;
+				}else if(i==2){
+					price = atoi(token);
+				}else{
+					quantity = atoi(token);
+				}
+			}
 
 			//insert item in list
 			printf("Received: %s,   %s,   %d,   %d\n",name,units,price,quantity);
