@@ -58,9 +58,10 @@ void search(struct node *head, char *name){
 void display(struct node *head){
 	printf("Product \t Unit \t Price \t Quantity\n");
 	while(head->next != NULL){
+		head = head->next;
 		printf("%s \t %s \t $%d \t %d\n", head->data->name, 
 head->data->unit, head->data->price, head->data->quantity);
-		head = head->next;
+		//head = head->next;
 	}
 }
 
