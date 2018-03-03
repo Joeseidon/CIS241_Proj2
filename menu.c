@@ -111,6 +111,7 @@ int performAction(int command){
 				}else{
 					quantity = atoi(token);
 				}
+				token=strtok(NULL, " ");
 			}
 
 			//insert item in list
