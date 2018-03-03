@@ -96,7 +96,7 @@ int performAction(int command){
 			printf("\nEnter product info. (name,unit,price,quantity)\n");
 			fflush(stdin);
 			fflush(stdout);
-			scanf("%s,%s,%d,%d",name,units,&price,&quantity);
+			scanf("%s,%s,%d,%d\n",name,units,&price,&quantity);
 
 			//insert item in list
 			printf("Received: %s,   %s,   %d,   %d\n",name,units,price,quantity);
