@@ -80,6 +80,8 @@ int performAction(int command){
 	int price=0,quantity=0;
 	char text[256];
 	
+	int i = 0;
+	
 	switch(command){
 		case 0:
 			exit(0);
