@@ -111,8 +111,10 @@ int performAction(int command){
 				}else if(i==1){
 					units=token;
 				}else if(i==2){
+					printf("token: %s",token);
 					price = atoi(token);
 				}else{
+					printf("token: %s",token);
 					quantity = atoi(token);
 				}
 				token=strtok(NULL, ",");
