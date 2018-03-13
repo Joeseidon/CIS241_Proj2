@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctypes.h>
+//#include <ctypes.h>
 #include <string.h>
-#include <functions.h>
+#include "functions.h"
 
 #define NUM_CMDS 10
- 
+/*
 typedef struct command command{
 	int cmd_num;
 	char *prompt;
@@ -23,22 +23,52 @@ command commands[10] = {
 	{7, ""},
 	{8, ""},
 	{9, ""}
-};
+};*/
+const char *OUT_FILE = "list.txt";
+const char *command_prompt[6] ={"1: Create and empty list \t 2: Insert a product",
+						  "\n3: Delete a product	   \t 4: Delete the entire list",
+						  "\n5: Search a product	   \t 6: Display products in the list",
+						  "\n7: Purchase a product    \t 8: Sell a product",
+						  "\n9: Save to file     	   \t 0: Exit",
+						  "\n\nEnter a command: "};
 
 struct node *list = NULL;
 
+int FIRST_CMD = 1;
+int remain_active = 1;
+
+int performAction(int command);
+void save_to_file(struct node *list, const char *filename);
+void flush(void);
+
 int main(int argc, char *argv[]){
 
-	//print intro prompt
+	int command =0;
 
 	while(remain_active){
-		 //monitor for user input 
-		 do{
+		//print intro prompt
+		int i;
+		
+		do{
+			for(i = 0; i<6; i++)
+			printf("%s",command_prompt[i]);
+		
+			//monitor for user input 
+			fflush(stdin);
+			scanf("%d",&command);
+			if(FIRST_CMD && command != 1){
+				printf("\nMust create a list first.\n\n");
+			}
+		}while((FIRST_CMD == 1 && command != 1) || (!FIRST_CMD && (command < 0 || command > 9)));//first command must be to create list //after, it must just be a valid command
+		
+		if(FIRST_CMD == 1){
+			FIRST_CMD = 0;
+		}
 		 
-		 }while();//first command must be to create list //after, it must just be a vlid command
-		 
-		 //act on valid input
-		 performAction(input_command);
+		//act on valid input
+		if(!performAction(command)){
+			printf("Action Error!\n");
+		}
 
 	}
 
@@ -46,15 +76,20 @@ int main(int argc, char *argv[]){
 }
 
 int performAction(int command){
-	int i;
-	for(i=0; i<NUM_CMDS; i++){
-		if commands[i].cmd_num == command){
-			printf("%s",commands[i].prompt);
-			break;
-		}
-	}
-	switch(i){
+	//temp values
+	char *name,*units;
+	int price=0,quantity=0;
+	char text[256];
+	char *ptr;
+	
+	
+	int i = 0;
+	
+	switch(command){
 		case 0:
+			exit(0);
+			break;
+		case 1:
 			if(list != NULL){
 				//delete current list
 				deleteAll(list);
@@ -62,31 +97,112 @@ int performAction(int command){
 			//make new list
 			list = init();
 			break;
-		case 1:
-			
-			break;
 		case 2:
-		
+			//fflush(stdin);
+			fprintf(stdout,"\nEnter product info. (name,unit,price,quantity)\n");
+			//fflush(stdin);
+			//fflush(stdout);
+			flush();
+			fgets(text,256,stdin);
+			//while(fgets(text,256,stdin) == NULL)
+				//fgets(text,256,stdin);
+			char *token = strtok(text, ",");
+			while(token != NULL){
+				if(i==0){
+					name=token;
+				}else if(i==1){
+					units=token;
+				}else if(i==2){
+					//printf("token: %s",token);
+					price = atoi(token);
+					//price =(int)strtol(text, &ptr, 10);
+				}else{
+					//printf("token: %s",token);
+					quantity = atoi(token);
+					//quantity =(int)strtol(ptr, &ptr, 10);
+				}
+				token=strtok(NULL, ",");
+				i++;
+			}
+
+			//insert item in list
+			/*printf("\tname: %s\n",name);
+			printf("\tunits: %s\n",units);
+			printf("\tprice: %d\n",price);
+			printf("\tquantity: %d\n",quantity);*/
+			
+			
+			insert(list,name,units,price,quantity);
 			break;
 		case 3:
-		
+			printf("\nEnter product name:\n");
+			flush();
+			fgets(text,256,stdin);
+			
+			//remove from lit
+			
+			delete(list, text);
 			break;
 		case 4:
-		
+			printf("\nAll nodes will be deleted!\n");
+			
+			deleteAll(list);
 			break;
 		case 5:
-		
+			printf("\nEnter the name to search for:\n");
+			flush();
+			fgets(text,256,stdin);
+			printf("Name Received: %s\n",text);
+			search(list, text);
 			break;
 		case 6:
-		
+			printf("\nThe list contains the following:\n"); 
+			
+			display(list);
 			break;
 		case 7:
-		
+			printf("\nEnter the name to purchase:\n");
+			flush();
+			fgets(text,256,stdin);
+			
+			purchase(list, text);
 			break;
 		case 8:
-		
+			printf("\nEnter the name to sell:\n");
+			flush();
+			fgets(text,256,stdin);
+			
+			sell(list, text);
 			break;
 		case 9:
-		
+			save_to_file(list,OUT_FILE);
 			break;
+			
+		default:
+			return 0;
+			
+	}
+	
+	return 1;
+}
+
+void save_to_file(struct node *list, const char *filename){
+	FILE *out = fopen(filename, "w");
+	printf("/nOPEN\n");
+	while(list!=NULL){
+		fprintf(out,"%s,%s,%d,%d\n",list->data->name,
+									list->data->unit,
+									list->data->price,
+									list->data->quantity);
+		
+		list=list->next;
+	}
+	fclose(out);
+}
+
+void flush(void)
+{
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF)
+        ;
 }
