@@ -98,9 +98,10 @@ int performAction(int command){
 			//fflush(stdin);
 			fprintf(stdout,"\nEnter product info. (name,unit,price,quantity)\n");
 			//fflush(stdin);
-			//fflush(stdout);
+			fflush(stdout);
 			//fgets(text,256,stdin);
-			while(fgets(text,256,stdin) == NULL);
+			while(fgets(text,256,stdin) == NULL)
+				fgets(text,256,stdin);
 			char *token = strtok(text, ",");
 			while(token != NULL){
 				if(i==0){
