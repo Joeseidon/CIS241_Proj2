@@ -136,12 +136,12 @@ int performAction(int command){
 			break;
 		case 3:
 			printf("\nEnter product name:\n");
-			fflush(stdin);
-			scanf("%s",name);
+			flush();
+			fgets(text,256,stdin);
 			
 			//remove from lit
 			
-			delete(list, name);
+			delete(list, text);
 			break;
 		case 4:
 			printf("\nAll nodes will be deleted!\n");
@@ -150,11 +150,10 @@ int performAction(int command){
 			break;
 		case 5:
 			printf("\nEnter the name to search for:\n");
-			fflush(stdin);
-			
-			scanf("%s",name);
+			flush();
+			fgets(text,256,stdin);
 			printf("Name Recieved\n");
-			search(list, name);
+			search(list, text);
 			break;
 		case 6:
 			printf("\nThe list contains the following:\n"); 
@@ -163,19 +162,17 @@ int performAction(int command){
 			break;
 		case 7:
 			printf("\nEnter the name to purchase:\n");
-			fflush(stdin);
+			flush();
+			fgets(text,256,stdin);
 			
-			scanf("%s",name);
-			
-			purchase(list, name);
+			purchase(list, text);
 			break;
 		case 8:
 			printf("\nEnter the name to sell:\n");
-			fflush(stdin);
+			flush();
+			fgets(text,256,stdin);
 			
-			scanf("%s",name);
-			
-			sell(list, name);
+			sell(list, text);
 			break;
 		case 9:
 			save_to_file(list,OUT_FILE);
@@ -191,6 +188,7 @@ int performAction(int command){
 
 void save_to_file(struct node *list, const char *filename){
 	FILE *out = fopen(filename, "w");
+	printf("/nOPEN\n");
 	while(list!=NULL){
 		fprintf(out,"%s,%s,%d,%d\n",list->data->name,
 									list->data->unit,
