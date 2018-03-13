@@ -39,6 +39,7 @@ int remain_active = 1;
 
 int performAction(int command);
 void save_to_file(struct node *list, const char *filename);
+void flush(void);
 
 int main(int argc, char *argv[]){
 
@@ -98,7 +99,8 @@ int performAction(int command){
 			//fflush(stdin);
 			fprintf(stdout,"\nEnter product info. (name,unit,price,quantity)\n");
 			//fflush(stdin);
-			fflush(stdout);
+			//fflush(stdout);
+			flush();
 			//fgets(text,256,stdin);
 			while(fgets(text,256,stdin) == NULL)
 				fgets(text,256,stdin);
@@ -186,4 +188,11 @@ void save_to_file(struct node *list, const char *filename){
 		list=list->next;
 	}
 	fclose(out);
+}
+
+void flush(void)
+{
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF)
+        ;
 }
