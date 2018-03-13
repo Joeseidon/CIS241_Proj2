@@ -80,6 +80,8 @@ int performAction(int command){
 	char *name,*units;
 	int price=0,quantity=0;
 	char text[256];
+	char *ptr;
+	
 	
 	int i = 0;
 	
@@ -112,8 +114,8 @@ int performAction(int command){
 					units=token;
 				}else if(i==2){
 					printf("token: %s",token);
-					char [5] temp = token;
-					price = atoi(temp);
+					//price = atoi(temp);
+					price = strtol(token, &ptr, 10);
 				}else{
 					printf("token: %s",token);
 					quantity = atoi(token);
