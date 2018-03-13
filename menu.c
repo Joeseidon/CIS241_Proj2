@@ -101,9 +101,9 @@ int performAction(int command){
 			//fflush(stdin);
 			//fflush(stdout);
 			flush();
-			//fgets(text,256,stdin);
-			while(fgets(text,256,stdin) == NULL)
-				fgets(text,256,stdin);
+			fgets(text,256,stdin);
+			//while(fgets(text,256,stdin) == NULL)
+				//fgets(text,256,stdin);
 			char *token = strtok(text, ",");
 			while(token != NULL){
 				if(i==0){
@@ -116,6 +116,7 @@ int performAction(int command){
 					quantity = atoi(token);
 				}
 				token=strtok(NULL, " ");
+				i++;
 			}
 
 			//insert item in list
