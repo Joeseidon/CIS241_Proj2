@@ -78,7 +78,7 @@ int main(int argc, char *argv[]){
 int performAction(int command){
 	//temp values
 	char *name,*units;
-	int price=0,quantity=0;
+	long int price=0,quantity=0;
 	char text[256];
 	char *ptr;
 	
@@ -128,8 +128,8 @@ int performAction(int command){
 			//insert item in list
 			printf("\tname: %s\n",name);
 			printf("\tunits: %s\n",units);
-			printf("\tprice: %d\n",price);
-			printf("\tquantity: %d\n",quantity);
+			printf("\tprice: %ld\n",price);
+			printf("\tquantity: %ld\n",quantity);
 			
 			
 			insert(list,name,units,price,quantity);
