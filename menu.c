@@ -115,7 +115,7 @@ int performAction(int command){
 				}else{
 					quantity = atoi(token);
 				}
-				token=strtok(NULL, " ");
+				token=strtok(NULL, ",");
 				i++;
 			}
 
