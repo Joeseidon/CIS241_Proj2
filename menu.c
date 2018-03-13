@@ -120,7 +120,12 @@ int performAction(int command){
 			}
 
 			//insert item in list
-			printf("Received: %s,   %s,   %d,   %d\n",name,units,price,quantity);
+			printf("\tname: %s\n",name);
+			printf("\tunits: %s\n",units);
+			printf("\tprice: %s\n",price);
+			printf("\tquantity: %s\n",quantity);
+			
+			
 			insert(list,name,units,price,quantity);
 			break;
 		case 3:
