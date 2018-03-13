@@ -113,11 +113,11 @@ int performAction(int command){
 				}else if(i==1){
 					units=token;
 				}else if(i==2){
-					printf("token: %s",token);
+					//printf("token: %s",token);
 					price = atoi(token);
 					//price =(int)strtol(text, &ptr, 10);
 				}else{
-					printf("token: %s",token);
+					//printf("token: %s",token);
 					quantity = atoi(token);
 					//quantity =(int)strtol(ptr, &ptr, 10);
 				}
@@ -126,10 +126,10 @@ int performAction(int command){
 			}
 
 			//insert item in list
-			printf("\tname: %s\n",name);
+			/*printf("\tname: %s\n",name);
 			printf("\tunits: %s\n",units);
 			printf("\tprice: %d\n",price);
-			printf("\tquantity: %d\n",quantity);
+			printf("\tquantity: %d\n",quantity);*/
 			
 			
 			insert(list,name,units,price,quantity);
@@ -152,7 +152,7 @@ int performAction(int command){
 			printf("\nEnter the name to search for:\n");
 			flush();
 			fgets(text,256,stdin);
-			printf("Name Recieved\n");
+			printf("Name Received: %s\n",text);
 			search(list, text);
 			break;
 		case 6:
