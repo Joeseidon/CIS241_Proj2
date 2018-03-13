@@ -115,10 +115,11 @@ int performAction(int command){
 				}else if(i==2){
 					printf("token: %s",token);
 					//price = atoi(temp);
-					price = strtol(token, &ptr, 10);
+					price = strtol(text, &ptr, 10);
 				}else{
 					printf("token: %s",token);
-					quantity = atoi(token);
+					//quantity = atoi(token);
+					quantity = strtol(ptr, &ptr, 10);
 				}
 				token=strtok(NULL, ",");
 				i++;
@@ -127,8 +128,8 @@ int performAction(int command){
 			//insert item in list
 			printf("\tname: %s\n",name);
 			printf("\tunits: %s\n",units);
-			printf("\tprice: %s\n",price);
-			printf("\tquantity: %s\n",quantity);
+			printf("\tprice: %d\n",price);
+			printf("\tquantity: %d\n",quantity);
 			
 			
 			insert(list,name,units,price,quantity);
