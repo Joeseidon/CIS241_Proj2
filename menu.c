@@ -112,7 +112,8 @@ int performAction(int command){
 					units=token;
 				}else if(i==2){
 					printf("token: %s",token);
-					price = atoi(token);
+					char [5] temp = token;
+					price = atoi(temp);
 				}else{
 					printf("token: %s",token);
 					quantity = atoi(token);
