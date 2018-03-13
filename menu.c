@@ -78,7 +78,7 @@ int main(int argc, char *argv[]){
 int performAction(int command){
 	//temp values
 	char *name,*units;
-	long int price=0,quantity=0;
+	int price=0,quantity=0;
 	char text[256];
 	char *ptr;
 	
@@ -115,11 +115,11 @@ int performAction(int command){
 				}else if(i==2){
 					printf("token: %s",token);
 					//price = atoi(temp);
-					price = strtol(text, &ptr, 10);
+					price =(int)strtol(text, &ptr, 10);
 				}else{
 					printf("token: %s",token);
-					//quantity = atoi(token);
-					quantity = strtol(ptr, &ptr, 10);
+					quantity = atoi(token);
+					//quantity =(int)strtol(ptr, &ptr, 10);
 				}
 				token=strtok(NULL, ",");
 				i++;
@@ -128,8 +128,8 @@ int performAction(int command){
 			//insert item in list
 			printf("\tname: %s\n",name);
 			printf("\tunits: %s\n",units);
-			printf("\tprice: %ld\n",price);
-			printf("\tquantity: %ld\n",quantity);
+			printf("\tprice: %d\n",price);
+			printf("\tquantity: %d\n",quantity);
 			
 			
 			insert(list,name,units,price,quantity);
