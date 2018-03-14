@@ -12,13 +12,13 @@
 	int quantity;
 };
 */
-typedef struct product{
+struct product{
 	char *name;
 	char *unit;
 	int price;
 	int quantity;
 	struct product next;
-}node;
+};
 
 
 /*struct node{
@@ -28,12 +28,12 @@ typedef struct product{
 };
 */
 
-node init(void);
+struct product init(void);
 
-void insert(node *head, char *name, char *unit, int price,
+void insert(struct product *head, char *name, char *unit, int price,
 int quantity);
 
-void display(node *head);
+void display(struct product *head);
 /*
 // Creates an empty list - only a head node
 struct node *init();

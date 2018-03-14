@@ -1,12 +1,12 @@
 #include "functions.h"
 
-node init(void){
-	node new = (node*)malloc(sizeof(node));
+struct product init(void){
+	struct product new = (struct product*)malloc(sizeof(struct product));
 	return new;
 }
 
-void insert(node *head, char *name, char *unit, int price, int quantity){
-	node new = (node*)malloc(sizeof(node));
+void insert(struct product *head, char *name, char *unit, int price, int quantity){
+	struct product new = (struct product*)malloc(sizeof(struct product));
 	new->name = name;
 	new->unit = unit;
 	new->price = price;
@@ -17,7 +17,7 @@ void insert(node *head, char *name, char *unit, int price, int quantity){
 	head->next = new;
 }
 
-void display(node *head){
+void display(struct product *head){
 	printf("Product \t Unit \t Price \t Quantity\n");
 	while(head->next != NULL){
 		head = head->next;
