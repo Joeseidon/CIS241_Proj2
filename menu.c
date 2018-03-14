@@ -95,6 +95,7 @@ int performAction(int command){
 			if(list != NULL){
 				//delete current list
 				deleteAll(list);
+				list = NULL;
 			}
 			//make new list
 			list = init();
