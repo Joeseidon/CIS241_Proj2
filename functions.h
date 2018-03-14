@@ -12,15 +12,14 @@
 	int quantity;
 };
 */
-struct product{
+typedef struct product{
 	char *name;
 	char *unit;
 	int price;
 	int quantity;
 	struct product next;
-};
+}node;
 
-typedef struct product node;
 
 /*struct node{
 	struct product *data;
