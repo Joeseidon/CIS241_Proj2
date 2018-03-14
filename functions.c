@@ -28,7 +28,7 @@ void display(struct product *head){
 void delete(struct product *head, char *name){
 	while(head->next != NULL){
 		
-		if(strcmp(head->next->name,name) == 1){
+		if(strcmp(head->next->name,name) == 0){
 			struct product *temp = head->next;
 			head->next = head->next->next;
 			free(temp);
@@ -50,7 +50,7 @@ void deleteAll(struct product *head){
 void search(struct product *head, char *name){
 	while(head->next != NULL){
 		
-		if(strcmp(head->next->name,name) == 1){
+		if(strcmp(head->next->name,name) == 0){
 			printf("Product %s found in list.\n", name);
 		}
 		
@@ -61,7 +61,7 @@ void search(struct product *head, char *name){
 void purchase(struct product *head, char *name){
 	while(head->next != NULL){
 		
-		if(strcmp(head->next->name,name) == 1){
+		if(strcmp(head->next->name,name) == 0){
 			head->next->quantity++;
 		}
 		
@@ -72,7 +72,7 @@ void purchase(struct product *head, char *name){
 void sell(struct product *head, char *name){
 	while(head->next != NULL){
 		
-		if(strcmp(head->next->name,name) == 1){
+		if(strcmp(head->next->name,name) == 0){
 			head->next->quantity--;
 			
 			if(head->quantity <= 0){
