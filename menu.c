@@ -56,9 +56,11 @@ int main(int argc, char *argv[]){
 			fflush(stdin);
 			scanf("%d",&command);
 			if(FIRST_CMD && command != 1){
+				if(command == 0)
+					break;
 				printf("\nMust create a list first.\n\n");
 			}
-		}while((FIRST_CMD == 1 && (command != 1 || command != 0)) || (!FIRST_CMD && (command < 0 || command > 9)));//first command must be to create list //after, it must just be a valid command
+		}while((FIRST_CMD == 1 && command != 1) || (!FIRST_CMD && (command < 0 || command > 9)));//first command must be to create list //after, it must just be a valid command
 		
 		if(FIRST_CMD == 1){
 			FIRST_CMD = 0;
