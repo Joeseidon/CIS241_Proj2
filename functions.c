@@ -21,15 +21,14 @@ void display(struct product *head){
 	printf("Product \t Unit \t Price \t Quantity\n");
 	while(head->next != NULL){
 		head = head->next;
-		printf("%s \t %s \t $%d \t %d\n",
-		head->name,head->unit,head->price,head->quantity);
+		printf("%s \t %s \t $%d \t %d\n", head->name,head->unit,head->price,head->quantity);
 	}
 }
 
 void delete(struct product *head, char *name){
 	while(head->next != NULL){
 		
-		if(strcmp(head->next->name,name) == 0){
+		if(strcmp(head->next->name,name) == 1){
 			struct product *temp = head->next;
 			head->next = head->next->next;
 			free(temp);
@@ -49,16 +48,44 @@ void deleteAll(struct product *head){
 }
 
 void search(struct product *head, char *name){
-	
+	while(head->next != NULL){
+		
+		if(strcmp(head->next->name,name) == 1){
+			printf("Product %s found in list.\n", name);
+		}
+		
+		head = head->next;
+	}
 }
 
 void purchase(struct product *head, char *name){
-	
+	while(head->next != NULL){
+		
+		if(strcmp(head->next->name,name) == 1){
+			head->next->quantity++;
+		}
+		
+		head = head->next;
+	}
 }
 
 void sell(struct product *head, char *name){
-	
+	while(head->next != NULL){
+		
+		if(strcmp(head->next->name,name) == 1){
+			head->next->quantity--;
+			
+			if(head->quantity <= 0){
+				struct product *temp = head->next;
+				head->next = head->next->next;
+				free(temp);
+			}
+		}
+		
+		head = head->next;
+	}
 }
+
 
 /*
 // Creates an empty list - only a head node
