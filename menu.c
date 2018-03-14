@@ -85,7 +85,10 @@ int performAction(int command){
 	
 	switch(command){
 		case 0:
-			deleteAll(list);
+			if(list != NULL){
+				deleteAll(list);
+				list = NULL;
+			}
 			exit(0);
 			break;
 		case 1:
@@ -140,7 +143,10 @@ int performAction(int command){
 		case 4:
 			printf("\nAll nodes will be deleted!\n");
 			
-			deleteAll(list);
+			if(list != NULL){
+				deleteAll(list);
+				list = NULL;
+			}
 			
 			FIRST_CMD = 1;
 			break;
