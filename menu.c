@@ -38,8 +38,7 @@ int FIRST_CMD = 1;
 int remain_active = 1;
 
 int performAction(int command);
-void save_to_file(struct product *head, const char *filename);
-void flush(void);
+
 
 int main(int argc, char *argv[]){
 
@@ -106,7 +105,7 @@ int performAction(int command){
 			fgets(text,256,stdin);
 
 			char *token = strtok(text, ",");
-			while(token != NULL){
+			while(token != NULL && i < 4){
 				if(i==0){
 					//printf("token: %s",token);
 					name=token;
@@ -122,7 +121,7 @@ int performAction(int command){
 				}else{
 					//printf("token: %s",token);
 					quantity = atoi(token);
-
+					
 				}
 				token=strtok(NULL, ",");
 				i++;
@@ -150,7 +149,7 @@ int performAction(int command){
 			printf("\nEnter the name to search for:\n");
 			flush();
 			fgets(text,256,stdin);
-			printf("Name Received: %s\n",text);
+
 			search(list, text);
 			break;
 		case 6:
@@ -182,25 +181,4 @@ int performAction(int command){
 	}
 	
 	return 1;
-}
-
-void save_to_file(struct product *head, const char *filename){
-	FILE *out = fopen(filename, "w");
-	printf("/nOPEN\n");
-	while(list!=NULL){
-		fprintf(out,"%s,%s,%d,%d\n",head->name,
-									head->unit,
-									head->price,
-									head->quantity);
-		
-		head=head->next;
-	}
-	fclose(out);
-}
-
-void flush(void)
-{
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF)
-        ;
 }

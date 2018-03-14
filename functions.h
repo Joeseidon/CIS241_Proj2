@@ -44,6 +44,10 @@ void search(struct product *head, char *name);
 void purchase(struct product *head, char *name);
 
 void sell(struct product *head, char *name);
+
+void save_to_file(struct product *head, const char *filename);
+
+void flush(void);
 /*
 // Creates an empty list - only a head node
 struct node *init();

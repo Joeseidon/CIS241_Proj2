@@ -6,11 +6,16 @@ struct product *init(void){
 }
 
 void insert(struct product *head, char *name, char *unit, int price, int quantity){
+	//create new product
 	struct product *new = (struct product*)malloc(sizeof(struct product));
+	
+	//add data
 	new->name = name;
 	new->unit = unit;
 	new->price = price;
 	new->quantity = quantity;
+	
+	//add to the end of the list
 	while(head->next != NULL){
 		head = head->next;
 	}
@@ -47,6 +52,27 @@ void deleteAll(struct product *head){
 	free(head);	
 }
 
+void save_to_file(struct product *head, const char *filename){
+	FILE *out = fopen(filename, "w");
+	printf("/nOPEN\n");
+	while(list!=NULL){
+		fprintf(out,"%s,%s,%d,%d\n",head->name,
+									head->unit,
+									head->price,
+									head->quantity);
+		
+		head=head->next;
+	}
+	fclose(out);
+}
+
+void flush(void)
+{
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF)
+        ;
+}
+
 void search(struct product *head, char *name){
 	while(head->next != NULL){
 		
@@ -75,7 +101,7 @@ void sell(struct product *head, char *name){
 		if(strcmp(head->next->name,name) == 0){
 			head->next->quantity--;
 			
-			if(head->quantity <= 0){
+			if(head->next->quantity <= 0){
 				struct product *temp = head->next;
 				head->next = head->next->next;
 				free(temp);
