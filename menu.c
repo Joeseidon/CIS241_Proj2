@@ -38,7 +38,7 @@ int FIRST_CMD = 1;
 int remain_active = 1;
 
 int performAction(int command);
-void save_to_file(struct node *list, const char *filename);
+void save_to_file(struct product *head, const char *filename);
 void flush(void);
 
 int main(int argc, char *argv[]){
@@ -186,16 +186,16 @@ int performAction(int command){
 	return 1;
 }
 
-void save_to_file(struct node *list, const char *filename){
+void save_to_file(struct product *head, const char *filename){
 	FILE *out = fopen(filename, "w");
 	printf("/nOPEN\n");
 	while(list!=NULL){
-		fprintf(out,"%s,%s,%d,%d\n",list->data->name,
-									list->data->unit,
-									list->data->price,
-									list->data->quantity);
+		fprintf(out,"%s,%s,%d,%d\n",head->name,
+									head->unit,
+									head->price,
+									head->quantity);
 		
-		list=list->next;
+		head=head->next;
 	}
 	fclose(out);
 }
