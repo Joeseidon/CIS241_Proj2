@@ -150,6 +150,8 @@ int performAction(int command){
 			printf("\nAll nodes will be deleted!\n");
 			
 			deleteAll(list);
+			
+			FIRST_CMD = 1;
 			break;
 		case 5:
 			printf("\nEnter the name to search for:\n");
