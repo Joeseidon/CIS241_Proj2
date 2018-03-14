@@ -14,6 +14,7 @@ void insert(struct product *head, char *name, char *unit, int price, int quantit
 	new->unit = unit;
 	new->price = price;
 	new->quantity = quantity;
+	new->next = NULL;
 	
 	//add to the end of the list
 	while(head->next != NULL){
