@@ -78,10 +78,7 @@ int performAction(int command){
 	//temp values
 	char *name=" ",*units=" ";
 	int price=0,quantity=0;
-	char text[256];
-	char *ptr;
-	
-	
+	char text[256];	
 	int i = 0;
 	
 	switch(command){

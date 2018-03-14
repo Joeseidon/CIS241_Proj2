@@ -55,7 +55,7 @@ void deleteAll(struct product *head){
 void save_to_file(struct product *head, const char *filename){
 	FILE *out = fopen(filename, "w");
 	printf("/nOPEN\n");
-	while(list!=NULL){
+	while(head!=NULL){
 		fprintf(out,"%s,%s,%d,%d\n",head->name,
 									head->unit,
 									head->price,
