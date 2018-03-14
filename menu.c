@@ -108,32 +108,25 @@ int performAction(int command){
 			char *token = strtok(text, ",");
 			while(token != NULL){
 				if(i==0){
-					printf("token: %s",token);
+					//printf("token: %s",token);
 					name=token;
-					strcpy(name,token);
+
 				}else if(i==1){
-					printf("token: %s",token);
+					//printf("token: %s",token);
 					units=token;
-					strcpy(units,token);
+
 				}else if(i==2){
 					//printf("token: %s",token);
 					price = atoi(token);
-					//price =(int)strtol(text, &ptr, 10);
+
 				}else{
 					//printf("token: %s",token);
 					quantity = atoi(token);
-					//quantity =(int)strtol(ptr, &ptr, 10);
+
 				}
 				token=strtok(NULL, ",");
 				i++;
-			}
-
-			//insert item in list
-			/*printf("\tname: %s\n",name);
-			printf("\tunits: %s\n",units);
-			printf("\tprice: %d\n",price);
-			printf("\tquantity: %d\n",quantity);*/
-			
+			}		
 			
 			insert(list,name,units,price,quantity);
 			break;

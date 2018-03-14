@@ -21,6 +21,7 @@ void display(struct product *head){
 	while(head->next != NULL){
 		head = head->next;
 		printf("Name: %s \t Unit: %s \t Price: $%d \t Quantity: %d\n", head->name,head->unit,head->price,head->quantity);
+		fflush(stdout);
 	}
 }
 
