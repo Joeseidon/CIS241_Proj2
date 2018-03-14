@@ -1,12 +1,12 @@
 #include "functions.h"
 
-struct product init(void){
-	struct product new = (struct product*)malloc(sizeof(struct product));
+struct product *init(void){
+	struct product *new = (struct product*)malloc(sizeof(struct product));
 	return new;
 }
 
 void insert(struct product *head, char *name, char *unit, int price, int quantity){
-	struct product new = (struct product*)malloc(sizeof(struct product));
+	struct product *new = (struct product*)malloc(sizeof(struct product));
 	new->name = name;
 	new->unit = unit;
 	new->price = price;
