@@ -108,9 +108,11 @@ int performAction(int command){
 			char *token = strtok(text, ",");
 			while(token != NULL){
 				if(i==0){
+					printf("token: %s",token);
 					name=token;
 					strcpy(name,token);
 				}else if(i==1){
+					printf("token: %s",token);
 					units=token;
 					strcpy(units,token);
 				}else if(i==2){
