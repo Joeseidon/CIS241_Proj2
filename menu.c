@@ -87,6 +87,7 @@ int performAction(int command){
 	
 	switch(command){
 		case 0:
+			deleteAll(list);
 			exit(0);
 			break;
 		case 1:
@@ -98,20 +99,20 @@ int performAction(int command){
 			list = init();
 			break;
 		case 2:
-			//fflush(stdin);
+
 			fprintf(stdout,"\nEnter product info. (name,unit,price,quantity)\n");
-			//fflush(stdin);
-			//fflush(stdout);
+
 			flush();
 			fgets(text,256,stdin);
-			//while(fgets(text,256,stdin) == NULL)
-				//fgets(text,256,stdin);
+
 			char *token = strtok(text, ",");
 			while(token != NULL){
 				if(i==0){
-					name=token;
+					//name=token;
+					strcpy(name,token);
 				}else if(i==1){
 					units=token;
+					strcpy(units,token);
 				}else if(i==2){
 					//printf("token: %s",token);
 					price = atoi(token);

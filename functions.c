@@ -18,10 +18,9 @@ void insert(struct product *head, char *name, char *unit, int price, int quantit
 }
 
 void display(struct product *head){
-	printf("Product \t Unit \t Price \t Quantity\n");
 	while(head->next != NULL){
 		head = head->next;
-		printf("%s \t %s \t $%d \t %d\n", head->name,head->unit,head->price,head->quantity);
+		printf("Name: %s \t Unit: %s \t Price: $%d \t Quantity%d\n", head->name,head->unit,head->price,head->quantity);
 	}
 }
 
