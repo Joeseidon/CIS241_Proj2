@@ -26,6 +26,40 @@ void display(struct product *head){
 	}
 }
 
+void delete(struct product *head, char *name){
+	while(head->next != NULL){
+		
+		if(strcmp(head->next->name,name) == 0){
+			struct product *temp = head->next;
+			head->next = head->next->next;
+			free(temp);
+		}
+		
+		head = head->next;
+	}
+}
+
+void deleteAll(struct product *head){
+	if(head->next != NULL){
+		//recursive deletion
+		deleteAll(head->next);
+	}
+	
+	free(head);	
+}
+
+void search(struct product *head, char *name){
+	
+}
+
+void purchase(struct product *head, char *name){
+	
+}
+
+void sell(struct product *head, char *name){
+	
+}
+
 /*
 // Creates an empty list - only a head node
 struct node *init(){

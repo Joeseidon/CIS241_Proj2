@@ -17,7 +17,7 @@ struct product{
 	char *unit;
 	int price;
 	int quantity;
-	struct product next;
+	struct product *next;
 };
 
 
@@ -28,12 +28,22 @@ struct product{
 };
 */
 
-struct product init(void);
+struct product *init(void);
 
 void insert(struct product *head, char *name, char *unit, int price,
 int quantity);
 
 void display(struct product *head);
+
+void delete(struct product *head, char *name);
+
+void deleteAll(struct product *head);
+
+void search(struct product *head, char *name);
+
+void purchase(struct product *head, char *name);
+
+void sell(struct product *head, char *name);
 /*
 // Creates an empty list - only a head node
 struct node *init();
