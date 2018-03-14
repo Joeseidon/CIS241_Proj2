@@ -77,7 +77,7 @@ int main(int argc, char *argv[]){
 
 int performAction(int command){
 	//temp values
-	char *name,*units;
+	char *name=" ",*units=" ";
 	int price=0,quantity=0;
 	char text[256];
 	char *ptr;
@@ -108,7 +108,7 @@ int performAction(int command){
 			char *token = strtok(text, ",");
 			while(token != NULL){
 				if(i==0){
-					//name=token;
+					name=token;
 					strcpy(name,token);
 				}else if(i==1){
 					units=token;
