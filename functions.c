@@ -53,27 +53,6 @@ void deleteAll(struct product *head){
 	free(head);	
 }
 
-void save_to_file(struct product *head, const char *filename){
-	FILE *out = fopen(filename, "w");
-	printf("/nOPEN\n");
-	while(head!=NULL){
-		fprintf(out,"%s,%s,%d,%d\n",head->name,
-									head->unit,
-									head->price,
-									head->quantity);
-		
-		head=head->next;
-	}
-	fclose(out);
-}
-
-void flush(void)
-{
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF)
-        ;
-}
-
 void search(struct product *head, char *name){
 	while(head->next != NULL){
 		
@@ -111,6 +90,29 @@ void sell(struct product *head, char *name){
 		
 		head = head->next;
 	}
+}
+
+void save_to_file(struct product *head, const char *filename){
+	FILE *out = fopen(filename, "w");
+	int i = 0;
+	while(head!=NULL){
+		fprintf(out,"%s,%s,%d,%d\n",head->name,
+									head->unit,
+									head->price,
+									head->quantity);
+		
+		head=head->next;
+		i++;
+	}
+	printf("\n%d Products Written to File: %s\n",i,filename);
+	fclose(out);
+}
+
+void flush(void)
+{
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF)
+        ;
 }
 
 
