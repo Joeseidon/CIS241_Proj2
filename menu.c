@@ -32,7 +32,7 @@ const char *command_prompt[6] ={"1: Create and empty list \t 2: Insert a product
 						  "\n9: Save to file     	   \t 0: Exit",
 						  "\n\nEnter a command: "};
 
-struct node *list = NULL;
+node *list = NULL;
 
 int FIRST_CMD = 1;
 int remain_active = 1;

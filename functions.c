@@ -1,5 +1,32 @@
 #include "functions.h"
 
+node init(void){
+	node new = (node*)malloc(sizeof(node));
+	return new;
+}
+
+void insert(node *head, char *name, char *unit, int price, int quantity){
+	node new = (node*)malloc(sizeof(node));
+	new->name = name;
+	new->unit = unit;
+	new->price = price;
+	new->quantity = quantity;
+	while(head->next != NULL){
+		head = head->next;
+	}
+	head->next = new;
+}
+
+void display(node *head){
+	printf("Product \t Unit \t Price \t Quantity\n");
+	while(head->next != NULL){
+		head = head->next;
+		printf("%s \t %s \t $%d \t %d\n",
+		head->name,head->unit,head->price,head->quantity);
+	}
+}
+
+/*
 // Creates an empty list - only a head node
 struct node *init(){
 	struct node *this = (struct node*) malloc(sizeof(struct node));
@@ -85,3 +112,4 @@ void sell(struct node *head, char *name){
 			}
 		}
 }
+*/

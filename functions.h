@@ -5,19 +5,37 @@
 #ifndef functions_h
 #define functions_h
 
-struct product{
+/*struct product{
 	char *name;
 	char *unit;
 	int price;
 	int quantity;
 };
+*/
+struct product{
+	char *name;
+	char *unit;
+	int price;
+	int quantity;
+	struct product next;
+};
 
-struct node{
+typedef struct product node;
+
+/*struct node{
 	struct product *data;
 	struct node *next;
 	struct node *prev;
 };
+*/
 
+node init(void);
+
+void insert(node *head, char *name, char *unit, int price,
+int quantity);
+
+void display(node *head);
+/*
 // Creates an empty list - only a head node
 struct node *init();
 
@@ -42,5 +60,5 @@ void purchase(struct node *head, char *name);
 
 // Removes one from the quantity of the given product
 void sell(struct node *head, char *name);
-
+*/
 #endif
