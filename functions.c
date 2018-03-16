@@ -25,13 +25,13 @@ void insert(struct product *head, char *name, char *unit, int price, int quantit
 	}
 	head->next = new;
 	
-	printf("New Node info %s,%s,%d,%d  address: %X\n",head->next->name,head->next->unit,head->next->price,head->next->quantity, head->next);
+	printf("New Node info %s,%s,%d,%d\n",head->next->name,head->next->unit,head->next->price,head->next->quantity);
 }
 
 void display(struct product *head){
 	while(head->next != NULL){
 		head = head->next;
-		printf("Name: %s \t Unit: %s \t Price: $%d \t Quantity: %d\n address: %X", head->name,head->unit,head->price,head->quantity, head->next);
+		printf("Name: %s \t Unit: %s \t Price: $%d \t Quantity: %d\n", head->name,head->unit,head->price,head->quantity);
 		fflush(stdout);
 	}
 }
@@ -62,15 +62,13 @@ void deleteAll(struct product *head){
 }
 
 int search(struct product *head, char *name){
-	int i = 0;
-	//printf("BEFORE SEARCH Name: %s \t Unit: %s \t Price: $%d \t Quantity: %d\n address: %X", head->name,head->unit,head->price,head->quantity, head->next);
 	while(head->next != NULL){
 		head = head->next;
 		if(strcmp(head->name,name) == 0){
-			i = 1;
+			return 1;
 		}
 	}
-	return i;
+	return 0;
 }
 
 void purchase(struct product *head, char *name){
@@ -78,12 +76,13 @@ void purchase(struct product *head, char *name){
 		
 		if(strcmp(head->next->name,name) == 0){
 			head->next->quantity++;
-			printf("Node info %s,%s,%d,%d  address: %X\n",head->next->name,head->next->unit,head->next->price,head->next->quantity, head->next);
+			return;
 		}
 		
 		head = head->next;
 		
 	}
+	printf("Product, %s, not found.\n",name);
 }
 
 void sell(struct product *head, char *name){
@@ -91,18 +90,21 @@ void sell(struct product *head, char *name){
 		
 		if(strcmp(head->next->name,name) == 0){
 			head->next->quantity--;
-			printf("Node info %s,%s,%d,%d  address: %X\n",head->next->name,head->next->unit,head->next->price,head->next->quantity, head->next);
+			
 			if(head->next->quantity <= 0){
 				struct product *temp = head->next;
 				head->next = head->next->next;
 				free(temp);
 			}
+			
+			return;
 		}
 		if(head->next == NULL)
 			break;
 		
 		head = head->next;
 	}
+	printf("Product, %s, not found.\n",name);
 }
 
 void save_to_file(struct product *head, const char *filename){

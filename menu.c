@@ -101,39 +101,40 @@ int performAction(int command){
 			list = init();
 			break;
 		case 2:
+			do{
+				fprintf(stdout,"\nEnter product info. (name,unit,price,quantity)\n");
 
-			fprintf(stdout,"\nEnter product info. (name,unit,price,quantity)\n");
-
-			flush();
-			fgets(text,256,stdin);
-			printf("textLength %d\n",strlen(text));
-			
-			if(text[strlen(text)-1]=='\n'){
-				text[strlen(text)-1] = '\0';
-			}
-
-			char *token = strtok(text, ",");
-			while(token != NULL && i < 4){
-				if(i==0){
-					//printf("token: %s",token);
-					name=token;
-
-				}else if(i==1){
-					//printf("token: %s",token);
-					units=token;
-
-				}else if(i==2){
-					//printf("token: %s",token);
-					price = atoi(token);
-
-				}else{
-					//printf("token: %s",token);
-					quantity = atoi(token);
-					
+				flush();
+				fgets(text,256,stdin);
+				printf("textLength %d\n",strlen(text));
+				
+				if(text[strlen(text)-1]=='\n'){
+					text[strlen(text)-1] = '\0';
 				}
-				token=strtok(NULL, ",");
-				i++;
-			}		
+
+				char *token = strtok(text, ",");
+				while(token != NULL && i < 4){
+					if(i==0){
+						//printf("token: %s",token);
+						name=token;
+
+					}else if(i==1){
+						//printf("token: %s",token);
+						units=token;
+
+					}else if(i==2){
+						//printf("token: %s",token);
+						price = atoi(token);
+
+					}else{
+						//printf("token: %s",token);
+						quantity = atoi(token);
+						
+					}
+					token=strtok(NULL, ",");
+					i++;
+				}	
+			}while(price <0 || quantity <=0 || search(list,name) == 1);
 			
 			insert(list,name,units,price,quantity);
 			break;
@@ -165,7 +166,16 @@ int performAction(int command){
 			if(text[strlen(text)-1]=='\n'){
 				text[strlen(text)-1] = '\0';
 			}
-			search(list, text);
+			if(search(list, text)){
+				printf("%s was found in the list.\n",text);
+				printf("Name: %s \t Unit: %s \t Price: $%d \t Quantity: %d\n", 
+						head->name,
+						head->unit,
+						head->price,
+						head->quantity);
+			}else{
+				printf("%s was not found in the list.\n", text);
+			}
 			break;
 		case 6:
 			printf("\nThe list contains the following:\n"); 
