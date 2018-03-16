@@ -9,11 +9,9 @@ struct product *init(void){
 void insert(struct product *head, char *name, char *unit, int price, int quantity){
 	//create new product
 	struct product *new = (struct product*)malloc(sizeof(struct product));
-	printf("New Product info %s,%s,%d,%d\n",name,unit,price,quantity);
+
 	//add data
-	//new->name = name;
 	strcpy(new->name,name);
-	//new->unit = unit;
 	strcpy(new->unit,unit);
 	new->price = price;
 	new->quantity = quantity;
@@ -24,8 +22,6 @@ void insert(struct product *head, char *name, char *unit, int price, int quantit
 		head = head->next;
 	}
 	head->next = new;
-	
-	printf("New Node info %s,%s,%d,%d\n",head->next->name,head->next->unit,head->next->price,head->next->quantity);
 }
 
 void display(struct product *head){
@@ -121,7 +117,7 @@ void save_to_file(struct product *head, const char *filename){
 		
 		i++;
 	}
-	printf("\n%d Products Written to File: %s\n",i,filename);
+	printf("\n%d Product(s) Written to File: %s\n",i,filename);
 	fclose(out);
 }
 
