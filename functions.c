@@ -22,7 +22,7 @@ void insert(struct product *head, char *name, char *unit, int price, int quantit
 	}
 	head->next = new;
 	
-	printf("New Node info %s,%s,%d,%d\n",head->next->name,head->next->unit,head->next->price,head->next->quantity);
+	printf("New Node info %s,%s,%d,%d  address: %X\n",head->next->name,head->next->unit,head->next->price,head->next->quantity, head->next);
 }
 
 void display(struct product *head){
@@ -71,6 +71,7 @@ void purchase(struct product *head, char *name){
 		
 		if(strcmp(head->next->name,name) == 0){
 			head->next->quantity++;
+			printf("Node info %s,%s,%d,%d  address: %X\n",head->next->name,head->next->unit,head->next->price,head->next->quantity, head->next);
 		}
 		
 		head = head->next;
@@ -83,7 +84,7 @@ void sell(struct product *head, char *name){
 		
 		if(strcmp(head->next->name,name) == 0){
 			head->next->quantity--;
-			
+			printf("Node info %s,%s,%d,%d  address: %X\n",head->next->name,head->next->unit,head->next->price,head->next->quantity, head->next);
 			if(head->next->quantity <= 0){
 				struct product *temp = head->next;
 				head->next = head->next->next;
