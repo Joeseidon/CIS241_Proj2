@@ -5,25 +5,7 @@
 #include "functions.h"
 
 #define NUM_CMDS 10
-/*
-typedef struct command command{
-	int cmd_num;
-	char *prompt;
-};
 
-//commands
-command commands[10] = {
-	{0, ""},
-	{1, ""},
-	{2, ""},
-	{3, ""},
-	{4, ""},
-	{5, ""},
-	{6, ""},
-	{7, ""},
-	{8, ""},
-	{9, ""}
-};*/
 const char *OUT_FILE = "list.txt";
 const char *command_prompt[6] ={"1: Create and empty list \t 2: Insert a product",
 						  "\n3: Delete a product	   \t 4: Delete the entire list",
@@ -114,19 +96,15 @@ int performAction(int command){
 				char *token = strtok(text, ",");
 				while(token != NULL && i < 4){
 					if(i==0){
-						//printf("token: %s",token);
 						name=token;
 
 					}else if(i==1){
-						//printf("token: %s",token);
 						units=token;
 
 					}else if(i==2){
-						//printf("token: %s",token);
 						price = atoi(token);
 
 					}else{
-						//printf("token: %s",token);
 						quantity = atoi(token);
 						
 					}
