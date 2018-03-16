@@ -74,7 +74,7 @@ void purchase(struct product *head, char *name){
 		head = head->next;*/
 		
 		head = head->next;
-		if(strcmp(head->nname,name) == 0){
+		if(strcmp(head->name,name) == 0){
 			head->quantity++;
 		}
 		
