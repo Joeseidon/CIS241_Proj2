@@ -42,6 +42,9 @@ void delete(struct product *head, char *name){
 			free(temp);
 		}
 		
+		if(head->next == NULL)
+			break;
+		
 		head = head->next;
 	}
 }
@@ -57,8 +60,9 @@ void deleteAll(struct product *head){
 
 void search(struct product *head, char *name){
 	while(head->next != NULL){
-		
-		if(strcmp(head->next->name,name) == 0){
+		char *temp;
+		srtcpy(temp,head->next->name);
+		if(strcmp(temp,name) == 0){
 			printf("Product %s found in list.\n", name);
 		}
 		
