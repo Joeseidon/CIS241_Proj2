@@ -60,8 +60,8 @@ void deleteAll(struct product *head){
 
 void search(struct product *head, char *name){
 	while(head->next != NULL){
-		char *temp;
-		srtcpy(temp,head->next->name);
+		char temp[256];
+		strcpy(temp,head->next->name);
 		if(strcmp(temp,name) == 0){
 			printf("Product %s found in list.\n", name);
 		}
