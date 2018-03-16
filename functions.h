@@ -13,8 +13,8 @@
 };
 */
 struct product{
-	char *name;
-	char *unit;
+	char name[256];
+	char unit[256];
 	int price;
 	int quantity;
 	struct product *next;

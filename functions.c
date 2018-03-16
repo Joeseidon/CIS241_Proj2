@@ -10,8 +10,10 @@ void insert(struct product *head, char *name, char *unit, int price, int quantit
 	struct product *new = (struct product*)malloc(sizeof(struct product));
 	printf("New Product info %s,%s,%d,%d\n",name,unit,price,quantity);
 	//add data
-	new->name = name;
-	new->unit = unit;
+	//new->name = name;
+	strcpy(new->name,name);
+	//new->unit = unit;
+	strcpy(new->unit,unit);
 	new->price = price;
 	new->quantity = quantity;
 	new->next = NULL;
@@ -28,7 +30,7 @@ void insert(struct product *head, char *name, char *unit, int price, int quantit
 void display(struct product *head){
 	while(head->next != NULL){
 		head = head->next;
-		printf("Name: %s \t Unit: %s \t Price: $%d \t Quantity: %d\n", head->name,head->unit,head->price,head->quantity);
+		printf("Name: %s \t Unit: %s \t Price: $%d \t Quantity: %d\n address: %X", head->name,head->unit,head->price,head->quantity, head->next);
 		fflush(stdout);
 	}
 }
@@ -59,7 +61,7 @@ void deleteAll(struct product *head){
 }
 
 void search(struct product *head, char *name){
-	printf("BEFORE SEARCH Name: %s \t Unit: %s \t Price: $%d \t Quantity: %d\n", head->next->name,head->next->unit,head->next->price,head->next->quantity);
+	printf("BEFORE SEARCH Name: %s \t Unit: %s \t Price: $%d \t Quantity: %d\n address: %X", head->name,head->unit,head->price,head->quantity, head->next);
 	while(head->next != NULL){
 		head = head->next;
 		if(strcmp(head->name,name) == 0){
