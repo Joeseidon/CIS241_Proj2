@@ -2,6 +2,7 @@
 
 struct product *init(void){
 	struct product *new = (struct product*)malloc(sizeof(struct product));
+	new->next = NULL;
 	return new;
 }
 
@@ -52,7 +53,7 @@ void delete(struct product *head, char *name){
 }
 
 void deleteAll(struct product *head){
-	if(head->next != NULL){
+	if(head != NULL){
 		//recursive deletion
 		deleteAll(head->next);
 	}
