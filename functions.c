@@ -60,13 +60,11 @@ void deleteAll(struct product *head){
 
 void search(struct product *head, char *name){
 	while(head->next != NULL){
-		char temp[256];
-		strcpy(temp,head->next->name);
-		if(strcmp(temp,name) == 0){
-			printf("Product %s found in list.\n", name);
-		}
-		
 		head = head->next;
+		if(strcmp(head->name,name) == 0){
+			printf("Product %s found in list.\n", name);
+			printf("Name: %s \t Unit: %s \t Price: $%d \t Quantity: %d\n", head->name,head->unit,head->price,head->quantity);
+		}
 	}
 }
 
