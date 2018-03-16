@@ -6,41 +6,31 @@
 #define FUNCTIONS_H
 
 struct product{
-	char *name;
-	char *unit;
+	char name[256];
+	char unit[256];
 	int price;
 	int quantity;
+	struct product *next;
 };
 
-struct node{
-	struct product *data;
-	struct node *next;
-	struct node *prev;
-};
+struct product *init(void);
 
-// Creates an empty list - only a head node
-struct node *init();
-
-// Inserts a product into the list
-void insert(struct node *head, char *name, char *unit, int price,
+void insert(struct product *head, char *name, char *unit, int price,
 int quantity);
 
-// Deletes a product from the list
-void delete(struct node *head, char *name);
+void display(struct product *head);
 
-// Deletes all products in the list
-void deleteAll(struct node *head);
+void delete(struct product *head, char *name);
 
-// Searches for a product in the list
-void search(struct node *head, char *name);
+void deleteAll(struct product *head);
 
-// Displays all products in the list
-void display(struct node *head);
+int search(struct product *head, char *name);
 
-// Adds one to the quantity of the given product
-void purchase(struct node *head, char *name);
+void purchase(struct product *head, char *name);
 
-// Removes one from the quantity of the given product
-void sell(struct node *head, char *name);
+void sell(struct product *head, char *name);
 
+void save_to_file(struct product *head, const char *filename);
+
+void flush(void);
 #endif
