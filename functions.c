@@ -59,6 +59,7 @@ void deleteAll(struct product *head){
 }
 
 void search(struct product *head, char *name){
+	printf("BEFORE SEARCH Name: %s \t Unit: %s \t Price: $%d \t Quantity: %d\n", head->next->name,head->next->unit,head->next->price,head->next->quantity);
 	while(head->next != NULL){
 		head = head->next;
 		if(strcmp(head->name,name) == 0){
