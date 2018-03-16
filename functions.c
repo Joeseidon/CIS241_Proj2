@@ -110,13 +110,15 @@ void sell(struct product *head, char *name){
 void save_to_file(struct product *head, const char *filename){
 	FILE *out = fopen(filename, "w");
 	int i = 0;
-	while(head!=NULL){
+	while(head->next != NULL){
+		head=head->next;
+		
 		fprintf(out,"%s,%s,%d,%d\n",head->name,
 									head->unit,
 									head->price,
 									head->quantity);
 		
-		head=head->next;
+		
 		i++;
 	}
 	printf("\n%d Products Written to File: %s\n",i,filename);

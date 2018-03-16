@@ -106,7 +106,6 @@ int performAction(int command){
 
 				flush();
 				fgets(text,256,stdin);
-				printf("textLength %d\n",strlen(text));
 				
 				if(text[strlen(text)-1]=='\n'){
 					text[strlen(text)-1] = '\0';
@@ -168,11 +167,6 @@ int performAction(int command){
 			}
 			if(search(list, text)){
 				printf("%s was found in the list.\n",text);
-				printf("Name: %s \t Unit: %s \t Price: $%d \t Quantity: %d\n", 
-						head->name,
-						head->unit,
-						head->price,
-						head->quantity);
 			}else{
 				printf("%s was not found in the list.\n", text);
 			}
