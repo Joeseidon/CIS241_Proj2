@@ -67,11 +67,18 @@ void search(struct product *head, char *name){
 void purchase(struct product *head, char *name){
 	while(head->next != NULL){
 		
-		if(strcmp(head->next->name,name) == 0){
+		/*if(strcmp(head->next->name,name) == 0){
 			head->next->quantity++;
 		}
 		
+		head = head->next;*/
+		
 		head = head->next;
+		if(strcmp(head->nname,name) == 0){
+			head->quantity++;
+		}
+		
+		
 	}
 }
 
