@@ -106,6 +106,11 @@ int performAction(int command){
 
 			flush();
 			fgets(text,256,stdin);
+			printf("textLength %d\n",strlen(text));
+			
+			if(text[strlen(text)-1]=='\n'){
+				text[sttlen(text)-1] = '\0';
+			}
 
 			char *token = strtok(text, ",");
 			while(token != NULL && i < 4){
@@ -137,6 +142,10 @@ int performAction(int command){
 			flush();
 			fgets(text,256,stdin);
 			
+			if(text[strlen(text)-1]=='\n'){
+				text[sttlen(text)-1] = '\0';
+			}
+			
 			//remove from lit
 			
 			delete(list, text);
@@ -155,6 +164,10 @@ int performAction(int command){
 			printf("\nEnter the name to search for:\n");
 			flush();
 			fgets(text,256,stdin);
+			
+			if(text[strlen(text)-1]=='\n'){
+				text[sttlen(text)-1] = '\0';
+			}
 
 			search(list, text);
 			break;
@@ -168,12 +181,20 @@ int performAction(int command){
 			flush();
 			fgets(text,256,stdin);
 			
+			if(text[strlen(text)-1]=='\n'){
+				text[sttlen(text)-1] = '\0';
+			}
+			
 			purchase(list, text);
 			break;
 		case 8:
 			printf("\nEnter the name to sell:\n");
 			flush();
 			fgets(text,256,stdin);
+			
+			if(text[strlen(text)-1]=='\n'){
+				text[sttlen(text)-1] = '\0';
+			}
 			
 			sell(list, text);
 			break;

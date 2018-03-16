@@ -87,6 +87,8 @@ void sell(struct product *head, char *name){
 				free(temp);
 			}
 		}
+		if(head->next == NULL)
+			break;
 		
 		head = head->next;
 	}
