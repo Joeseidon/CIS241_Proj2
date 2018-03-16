@@ -61,15 +61,16 @@ void deleteAll(struct product *head){
 	free(head);	
 }
 
-void search(struct product *head, char *name){
+int search(struct product *head, char *name){
+	int i = 0;
 	//printf("BEFORE SEARCH Name: %s \t Unit: %s \t Price: $%d \t Quantity: %d\n address: %X", head->name,head->unit,head->price,head->quantity, head->next);
 	while(head->next != NULL){
 		head = head->next;
 		if(strcmp(head->name,name) == 0){
-			printf("Product %s found in list.\n", name);
-			printf("Name: %s \t Unit: %s \t Price: $%d \t Quantity: %d\n", head->name,head->unit,head->price,head->quantity);
+			i = 1;
 		}
 	}
+	return i;
 }
 
 void purchase(struct product *head, char *name){

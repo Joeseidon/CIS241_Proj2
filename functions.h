@@ -39,7 +39,7 @@ void delete(struct product *head, char *name);
 
 void deleteAll(struct product *head);
 
-void search(struct product *head, char *name);
+int search(struct product *head, char *name);
 
 void purchase(struct product *head, char *name);
 
