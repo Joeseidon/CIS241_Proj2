@@ -8,7 +8,7 @@ struct product *init(void){
 void insert(struct product *head, char *name, char *unit, int price, int quantity){
 	//create new product
 	struct product *new = (struct product*)malloc(sizeof(struct product));
-	
+	printf("New Product info %s,%s,%d,%d\n",name,unit,price,quantity);
 	//add data
 	new->name = name;
 	new->unit = unit;
@@ -21,6 +21,8 @@ void insert(struct product *head, char *name, char *unit, int price, int quantit
 		head = head->next;
 	}
 	head->next = new;
+	
+	printf("New Node info %s,%s,%d,%d\n",head->next->name,head->next->unit,head->next->price,head->next->quantity);
 }
 
 void display(struct product *head){
@@ -67,17 +69,11 @@ void search(struct product *head, char *name){
 void purchase(struct product *head, char *name){
 	while(head->next != NULL){
 		
-		/*if(strcmp(head->next->name,name) == 0){
+		if(strcmp(head->next->name,name) == 0){
 			head->next->quantity++;
 		}
 		
-		head = head->next;*/
-		
 		head = head->next;
-		if(strcmp(head->name,name) == 0){
-			head->quantity++;
-		}
-		
 		
 	}
 }
