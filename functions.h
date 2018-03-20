@@ -33,4 +33,5 @@ void sell(struct product *head, char *name);
 void save_to_file(struct product *head, const char *filename);
 
 void flush(void);
+
 #endif
